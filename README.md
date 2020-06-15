@@ -1,4 +1,5 @@
 # docker
+Launch Your Wordpress site in a seconds.
 A mini docker wordpress ready to use site including the backend mysql database connection
 docker-compose up command to launch the website
 Runs on port 8081
