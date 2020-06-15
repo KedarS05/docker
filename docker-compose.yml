@@ -1,0 +1,39 @@
+version: '3'
+services:
+  mysqlc:
+    image: mysql:5.7
+    volumes:
+       - database:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: redhat
+      MYSQL_USER: google
+      MYSQL_PASSWORD: mypass
+      MYSQL_DATABASE: mydb
+
+  wordpressite:
+    image: wordpress:latest
+    volumes:
+       - wordpress:/var/www/html
+    restart: always
+    depends_on:
+      - mysqlc
+    ports:
+      - 8081:80
+    environment:
+      WORDPRESS_DB_HOST: mysqlc
+      WORDPRESS_DB_USER: google
+      WORDPRESS_DB_PASSWORD: mypass
+      WORDPRESS_DB_NAME: mydb  
+
+
+volumes:
+  database:
+  wordpress:
+
+
+
+
+
+
+
